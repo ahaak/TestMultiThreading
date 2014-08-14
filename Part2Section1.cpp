@@ -21,13 +21,14 @@
  */
 
 
+#include <iostream>            // c++ I/O
 #include <stdio.h>
 #include <windows.h>          // for HANDLE
 #include <process.h>          // for _beginthread()
 
 #define MSG_BUF_SIZE  128
 
-//#define  WITH_SYNCHRONIZATION
+#define  WITH_SYNCHRONIZATION
 
 
 class MessageBuffer 
@@ -422,4 +423,6 @@ int main()
     m = NULL;
 
     printf("Primary thread terminating.\n");
+    
+    std::cin.ignore();
 }

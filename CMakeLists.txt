@@ -34,61 +34,10 @@ FIND_PACKAGE(OpenCV REQUIRED )
 LINK_DIRECTORIES ("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v6.0/lib/Win32") 
 
 
+# Boost stuff
 
-#LINK_DIRECTORIES ($ENV{BME_BASE_DIR}/Ascension/Lib) 
-#LINK_DIRECTORIES ($ENV{BME_BASE_DIR}/NXT++.07/bin32/${OutDir}) 
-#LINK_DIRECTORIES ($ENV{BME_BASE_DIR}/NXT++.07/Lib) 
-
-#INCLUDE_DIRECTORIES($ENV{BME_BASE_DIR}/Ascension/Include)
-#INCLUDE_DIRECTORIES($ENV{BME_BASE_DIR}/NXT++.07/include)
-#INCLUDE_DIRECTORIES($ENV{BME_BASE_DIR}/TiePie/include)
-
-#INCLUDE_DIRECTORIES($ENV{NIG_COMMON_DIR}/../thread)
-#INCLUDE_DIRECTORIES($ENV{NIG_COMMON_DIR}/../Timer)
-#INCLUDE_DIRECTORIES(${TestMultiThread_SOURCE_DIR})
-#INCLUDE_DIRECTORIES(${TestMultiThread_SOURCE_DIR}/Threading)
-#INCLUDE_DIRECTORIES(${ITK_DIR}/../Modules/Bridge/VtkGlue/include)
-#INCLUDE_DIRECTORIES($ENV{NIG_COMMON_DIR})
-
-
-#SET (EXT_hdr 
-#	$ENV{BME_BASE_DIR}/TiePie/include/TiePie.h
-#	$ENV{BME_BASE_DIR}/TiePie/include/TiePieDLL.h
-#	$ENV{BME_BASE_DIR}/Ascension/Include/ATC3DG.h
-#	$ENV{BME_BASE_DIR}/NXT++.07/include/NXT++.h	 
-#	)
-#SET (EXT_files  
-#	$ENV{BME_BASE_DIR}/TiePie/Source/tiepiedll.cpp
-#	$ENV{BME_BASE_DIR}/NXT++.07/src/NXT++.cpp
-#	)
-   
-	  
-#SET_SOURCE_FILES_PROPERTIES( ${HW6_hdr} PROPERTIES HEADER_FILE_ONLY TRUE )
-#	SOURCE_GROUP( "External headers" FILES ${EXT_hdr} )
-#	SOURCE_GROUP( "External sources" FILES ${EXT_files} )
-
-
-#SET( RobotBaseFiles 
-#	$ENV{NIG_COMMON_DIR}/utility.h
-#	$ENV{NIG_COMMON_DIR}/../thread//Thread.h
-#	Threading/NIGMultiThread.h
-#	Threading/NIGReconstructionThread.txx
-#	Threading/NIGReconstructionThread.h
-#	Threading/NIGTiepieThread.txx
-#	Threading/NIGTiepieThread.h
-#	Threading/NIGLegoThread.txx
-#	Threading/NIGLegoThread.h
-#	Threading/NIGOpenCVThread.txx
-#	Threading/NIGOpenCVThread.h
-#	Threading/NIGViewingThread.txx
-#	Threading/NIGViewingThread.h
-#	Threading/NIGTrakstarThread.txx
-#	MainPage.h
-#	$ENV{NIG_COMMON_DIR}/../Timer/Timer.cpp
-#	$ENV{NIG_COMMON_DIR}/../Timer/Timer.h
-#	${EXT_hdr}
-#	${EXT_files}
-#	)
+INCLUDE_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_52_0/bin64/include/boost-1_52)
+#LINK_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_52_0/bin64/Lib/${OutDir})
 
 		
 
@@ -101,12 +50,10 @@ SET( TestMultiThreadSyncFiles
 SET( TestMultiThreadP2S1Files 
 	Part2Section1.cpp
 	)
-# VXL stuff
-#INCLUDE_DIRECTORIES( $ENV{BME_BASE_DIR}/vxl-1.14.0/Bin32/vcl )
-#INCLUDE_DIRECTORIES( $ENV{BME_BASE_DIR}/vxl-1.14.0/Bin32/core )
-#INCLUDE_DIRECTORIES( $ENV{BME_BASE_DIR}/vxl-1.14.0/core )
-#INCLUDE_DIRECTORIES( $ENV{BME_BASE_DIR}/vxl-1.14.0/vcl )
-#LINK_DIRECTORIES( $ENV{BME_BASE_DIR}/vxl-1.14.0/Bin32/Lib/${OutDir} )
+SET( TestVideoBufferFiles 
+	VideoBuffer.cpp
+	)
+
 
 # common stuff
 
@@ -120,3 +67,6 @@ TARGET_LINK_LIBRARIES ( TestMultiThreadSync ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${
 
 ADD_EXECUTABLE( TestMultiThreadP2S1 ${TestMultiThreadP2S1Files})
 TARGET_LINK_LIBRARIES ( TestMultiThreadP2S1 ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
+
+ADD_EXECUTABLE( TestVideoBuffer ${TestVideoBufferFiles})
+TARGET_LINK_LIBRARIES ( TestVideoBuffer ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
