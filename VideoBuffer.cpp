@@ -1,8 +1,10 @@
 #include <iostream>            // c++ I/O
+#include "opencv2/highgui/highgui.hpp"
+
 #include <boost/thread/condition.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/thread.hpp>
-#include <boost/thread/condition.hpp>
+#include <boost/circular_buffer.hpp>
 
 // Thread safe circular buffer 
 template <typename T>
@@ -40,11 +42,13 @@ public:
 private:
   boost::condition buffer_not_empty;
   boost::mutex monitor;
-  //boost::circular_buffer<T> cb;
+  boost::circular_buffer<T> cb;
 };
 
 int main()
 {
-
+  cv::Mat test;
   std::cin.ignore();
+
+  circ_buffer<cv::Mat> test2;
 }

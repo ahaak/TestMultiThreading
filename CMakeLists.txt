@@ -36,8 +36,8 @@ LINK_DIRECTORIES ("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v6.0/lib/W
 
 # Boost stuff
 
-INCLUDE_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_52_0/bin64/include/boost-1_52)
-#LINK_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_52_0/bin64/Lib/${OutDir})
+INCLUDE_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_56_0/bin32/include/boost-1_56)
+LINK_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_56_0/bin32/Lib/${OutDir})
 
 		
 
