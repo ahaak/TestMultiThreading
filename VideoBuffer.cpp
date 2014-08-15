@@ -48,7 +48,16 @@ private:
 int main()
 {
   cv::Mat test;
+
+  circ_buffer<cv::Mat> * test2 = new circ_buffer<cv::Mat>(5);
+  std::cout << "Size Buffer: " << test2->size();
+  test2->send( test );
+  std::cout << "Size Buffer: " << test2->size();
+  cv::Mat test3 = test2->receive();
+  std::cout << "Size Buffer: " << test2->size();
+  
+
   std::cin.ignore();
 
-  circ_buffer<cv::Mat> test2;
+  
 }
