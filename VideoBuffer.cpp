@@ -74,14 +74,20 @@ public:
       for (;;)
       {
         m_cap >> frame;
-        cv::cvtColor( frame, frame, cv::COLOR_BGR2GRAY );
-        double minVal, maxVal;
-        int minInd, maxInd;
-        cv::minMaxIdx( frame, &minVal, &maxVal, &minInd, &maxInd, cv::Mat() );
-        cv::Scalar meanVal = cv::mean( frame, cv::Mat() );
-        m_ringBuffer->send( frame );
-        std::cout << "SET frame at iteration " << itr << ". Buffer size: " << m_ringBuffer->size() << ". Mean intensity in frame: " << meanVal[0] << std::endl;
-        ++itr;
+        cv::Size sizeFrame = frame.size();
+        std::cout << "Frame Size:" << frame.size() << std::endl;
+        if ( sizeFrame.height > 0 && sizeFrame.width > 0 )
+        {
+          std::cout << frame.size();
+          cv::cvtColor( frame, frame, cv::COLOR_BGR2GRAY );
+          double minVal, maxVal;
+          int minInd, maxInd;
+          cv::minMaxIdx( frame, &minVal, &maxVal, &minInd, &maxInd, cv::Mat() );
+          cv::Scalar meanVal = cv::mean( frame, cv::Mat() );
+          m_ringBuffer->send( frame );
+          std::cout << "SET frame at iteration " << itr << ". Buffer size: " << m_ringBuffer->size() << ". Mean intensity in frame: " << meanVal[0] << std::endl;
+          ++itr;
+        }
       }
     }   
   }
@@ -139,7 +145,7 @@ int main()
 {
   DWORD   dwExitCode;
   // circular buffer
-  circ_buffer<cv::Mat> *ringBuffer = new circ_buffer<cv::Mat>(10);
+  circ_buffer<cv::Mat> *ringBuffer = new circ_buffer<cv::Mat>(100);
   std::cout << "Initialized ring buffer. Buffer size: " << ringBuffer->size() << std::endl;
 
   // threaded video show
