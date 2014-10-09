@@ -53,8 +53,9 @@ SET( TestMultiThreadP2S1Files
 SET( TestVideoBufferFiles 
 	VideoBuffer.cpp
 	)
-
-
+SET( Test2DimageDisplayFiles 
+	display2DImages.cpp
+	)
 # common stuff
 
 INCLUDE_DIRECTORIES( $ENV{ALEX_COMMON_DIR} )
@@ -70,3 +71,6 @@ TARGET_LINK_LIBRARIES ( TestMultiThreadP2S1 ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${
 
 ADD_EXECUTABLE( TestVideoBuffer ${TestVideoBufferFiles})
 TARGET_LINK_LIBRARIES ( TestVideoBuffer ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
+
+ADD_EXECUTABLE( Test2DimageDisplay ${Test2DimageDisplayFiles})
+TARGET_LINK_LIBRARIES ( Test2DimageDisplay ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
