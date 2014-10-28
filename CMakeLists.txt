@@ -5,41 +5,12 @@ IF(COMMAND CMAKE_POLICY)
 	CMAKE_POLICY(SET CMP0003 NEW)
 ENDIF(COMMAND CMAKE_POLICY)
 
+INCLUDE ($ENV{BME_BASE_DIR}/Config/BMECMakeLists.txt)
 
-# Microsoft specific items
-IF( MSVC )
- # Kill the anoying MS VS warning about non-safe functions.
- # They hide real warnings.
- ADD_DEFINITIONS(
-   /D_SCL_SECURE_NO_DEPRECATE
-   /D_CRT_SECURE_NO_DEPRECATE
-   /D_CRT_TIME_FUNCTIONS_NO_DEPRECATE
- )
-ENDIF()
-
-FIND_PACKAGE (ITK REQUIRED)
-INCLUDE( ${USE_ITK_FILE} )
-
-FIND_PACKAGE (VTK REQUIRED)
-INCLUDE( ${USE_VTK_FILE} )
-
-FIND_PACKAGE(OpenCV REQUIRED )
-
-#LINK_LIBRARIES(${OpenCV_LIBS} )
-
-
-#FIND_PACKAGE(CUDA REQUIRED)
  
 
-LINK_DIRECTORIES ("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v6.0/lib/Win32") 
+#LINK_DIRECTORIES ("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v6.0/lib/Win32") 
 
-
-# Boost stuff
-
-INCLUDE_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_56_0/bin32/include/boost-1_56)
-LINK_DIRECTORIES( D:/VisualStudioBaseProjects/boost_1_56_0/bin32/Lib/${OutDir})
-
-		
 
 SET( TestMultiThreadFiles
 	mainTestMultiThreading.cpp
@@ -73,4 +44,4 @@ ADD_EXECUTABLE( TestVideoBuffer ${TestVideoBufferFiles})
 TARGET_LINK_LIBRARIES ( TestVideoBuffer ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
 
 ADD_EXECUTABLE( Test2DimageDisplay ${Test2DimageDisplayFiles})
-TARGET_LINK_LIBRARIES ( Test2DimageDisplay ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} )
+TARGET_LINK_LIBRARIES ( Test2DimageDisplay ${ITK_LIBRARIES} ${VTK_LIBRARIES} ${OpenCV_LIBS} vtkPlusCommon )
