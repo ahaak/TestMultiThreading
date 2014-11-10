@@ -78,7 +78,7 @@ public:
         std::cout << "Frame Size:" << frame.size() << std::endl;
         if ( sizeFrame.height > 0 && sizeFrame.width > 0 )
         {
-          std::cout << frame.size();
+          std::cout << frame.size() << std::endl;
           cv::cvtColor( frame, frame, cv::COLOR_BGR2GRAY );
           double minVal, maxVal;
           int minInd, maxInd;
